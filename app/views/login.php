@@ -30,13 +30,11 @@
         color: white;
         margin-top: 10px;
         white-space: nowrap;
-        
     }
 
     .divBoutonCo {
         display: flex;
         justify-content: center;
-        
     }
 
     .divTout {
@@ -45,7 +43,6 @@
         margin-left: 60px;
         margin-right: 60px;
         margin-top: -16px;
-        
     }
 </style>
 
@@ -54,24 +51,33 @@
     <div class="divCo">
         <h2 class="h2Co">Connexion</h2>
 
-        <?php if (isset($_SESSION['error_message'])): ?>
+        <?php 
+        // Vérifie si un message d'erreur est présent dans la session
+        if (isset($_SESSION['error_message'])): ?>
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <!-- Affiche le message d'erreur stocké dans la session -->
                 <?= $_SESSION['error_message']; ?>
             </div>
-            <?php unset($_SESSION['error_message']); ?>
+            <?php 
+            // Supprime le message d'erreur après l'affichage pour éviter qu'il réapparaisse
+            unset($_SESSION['error_message']); ?>
         <?php endif; ?>
 
+        <!-- Formulaire de connexion -->
         <form action="index.php?action=connexion" method="POST">
             <div class="mb-3">
                 <label for="username" class="form-label">Nom d'utilisateur :</label>
+                <!-- Champ pour entrer le nom d'utilisateur -->
                 <input type="text" id="username" name="username" class="form-control" required>
             </div>
 
             <div class="mb-3">
                 <label for="password" class="form-label">Mot de passe :</label>
+                <!-- Champ pour entrer le mot de passe -->
                 <input type="password" id="password" name="password" class="form-control" required>
             </div>
             <div class="divBoutonCo">
+                <!-- Bouton pour soumettre le formulaire -->
                 <button type="submit" class="boutonCo">Se connecter</button>
             </div>
         </form>

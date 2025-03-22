@@ -14,7 +14,7 @@ class AdminController
     // Déclare une méthode pour gérer la connexion d'un utilisateur.
     public function connect($username, $password)
     {
-        // Définition des identifiants administratifs valides.
+        // Définition des identifiants valides.
         $adminCredentials = [
             'username' => 'banquier', // Le nom d'utilisateur attendu.
             'password' => hash('sha256', '1234') // Le mot de passe est haché pour plus de sécurité.
@@ -40,13 +40,13 @@ class AdminController
         }
     }
 
-    // Déclare une méthode appelée disconnect() pour gérer la déconnexion d'un utilisateur.
+    // Déclare une méthode pour gérer la déconnexion d'un utilisateur.
     public function disconnect()
     {
         // Supprime la session associée à l'utilisateur connecté pour le déconnecter.
         unset($_SESSION['username']);
 
-        // Redirige l'utilisateur vers la page d'accueil (index.php), typiquement la page de connexion.
+        // Redirige l'utilisateur vers la page d'accueil.
         header('Location: index.php');
     }
 }

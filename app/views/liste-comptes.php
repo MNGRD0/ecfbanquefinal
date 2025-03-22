@@ -1,6 +1,8 @@
 <?php require_once __DIR__ . '/templates/header.php'; ?>
 
-<?php if (!empty($comptes)): ?>
+<?php 
+// Vérifie si la liste $comptes contient des données
+if (!empty($comptes)): ?>
 
     <style>
         th {
@@ -53,15 +55,21 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($comptes as $compte): ?>
+                    <?php 
+                    // Parcourt chaque compte dans la liste $comptes pour les afficher dans le tableau
+                    foreach ($comptes as $compte): ?>
                         <tr>
+                            <!-- Affiche les informations du compte en utilisant htmlspecialchars pour sécuriser les données -->
                             <td><?= htmlspecialchars($compte['rib']) ?></td>
                             <td><?= htmlspecialchars($compte['solde']) ?></td>
                             <td><?= htmlspecialchars($compte['id_client']) ?></td>
                             <td><?= htmlspecialchars($compte['type']) ?></td>
                             <td>
+                                <!-- Bouton pour voir les détails du compte, redirige vers l'action "voir-compte" -->
                                 <a href="?id_compte=<?= $compte['id_compte'] ?>&action=voir-compte" class="btn btn-info btn-sm">Voir</a>
+                                <!-- Bouton pour modifier un compte, redirige vers l'action "modifier-compte" -->
                                 <a href="?id_compte=<?= $compte['id_compte'] ?>&action=modifier-compte" class="btn btn-warning btn-sm">Modifier</a>
+                                <!-- Bouton pour supprimer un compte, redirige vers l'action "supprimer-compte" avec confirmation -->
                                 <a href="?id_compte=<?= $compte['id_compte'] ?>&action=supprimer-compte" class="btn btn-danger btn-sm"
                                    onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce compte ?')">
                                     Supprimer
@@ -74,7 +82,9 @@
         </div>
     </div>
 
-<?php else: ?>
+<?php 
+// Si la liste $comptes est vide, affiche un message indiquant qu'aucun compte n'a été trouvé
+else: ?>
     <p style="text-align: center;">Aucun compte trouvé.</p>
 <?php endif; ?>
 

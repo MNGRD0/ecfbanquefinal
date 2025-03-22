@@ -39,6 +39,8 @@
             padding-top: 7px;
             padding-bottom: 7px;
             border-radius: 4px 4px 0 0;
+            white-space: nowrap; 
+            font-size: 10px;
         }
 
         .boutonHeader:hover {
@@ -83,9 +85,13 @@
                     <a href="?page=nouveau-contrat"><button class="boutonHeader">Ajouter un contrat</button></a>
                 </li>
                 <li class="nav-item">
-                    <?php if (isset($_SESSION['username'])): ?>
+                    <?php 
+                    // Vérifie si l'utilisateur est connecté
+                    if (isset($_SESSION['username'])): ?>
+                        <!-- Si l'utilisateur est connecté, affiche un bouton pour se déconnecter -->
                         <a href="?action=disconnect"><button class="boutonHeader">Déconnexion</button></a>
                     <?php else: ?>
+                        <!-- Si l'utilisateur n'est pas connecté, affiche un bouton pour se connecter -->
                         <a href="?page=login"><button class="boutonHeader">Connexion</button></a>
                     <?php endif; ?>
                 </li>
@@ -93,10 +99,12 @@
         </div>
     </nav>
 
-    <?php if (isset($_SESSION['username'])): ?>
+    <?php 
+    // Vérifie si l'utilisateur est connecté pour afficher son nom
+    if (isset($_SESSION['username'])): ?>
         <div class="divVousNaviguez">
+            <!-- Affiche un message indiquant avec quel utilisateur l'on navigue -->
             <p class="pVousNaviguez">Vous naviguez en tant que: <strong><?= $_SESSION['username'] ?></strong></p>
         </div>
     <?php endif; ?>
-</body>
-</html>
+
