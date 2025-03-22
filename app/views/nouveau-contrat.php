@@ -18,7 +18,7 @@
             margin-left: 60px;
             margin-right: 60px;
             margin-top: -16px;
-            padding-bottom: 300px;
+            padding-bottom: 50px;
         }
 
         .divTabComptes {

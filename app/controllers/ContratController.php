@@ -31,6 +31,16 @@ class ContratController
         require_once __DIR__ . '/../views/liste-contrats.php';
     }
 
+    // Prépare les données pour modifier un contrat
+    public function modifierContrat($id_contrat) 
+    {
+        // Récupère les informations du contrat à modifier
+        $contrat = $this->contratModel->recupererContrat($id_contrat);
+        // Charge la vue contenant le formulaire pour modifier le contrat
+        require_once __DIR__ . '/../views/modifier-contrat.php';
+    }
+
+
     // Affiche les détails d'un contrat spécifique
     public function voirContrat($id_contrat)
     {

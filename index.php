@@ -15,7 +15,7 @@ $adminController = new AdminController();
 // Vérification de la session utilisateur
 if (!isset($_SESSION['username'])) {
     $adminController->index();
-    exit; // On s'assure d'arrêter l'exécution si non connecté
+    
 }
 
 // Gestion des actions et pages pour les clients
